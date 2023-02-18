@@ -16,6 +16,10 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />
   },
   {
+    path: "/Pokemon",
+    element: <App />
+  },
+  {
     path: "/dados/:id",
     element: <DadosPokemon />
   }
