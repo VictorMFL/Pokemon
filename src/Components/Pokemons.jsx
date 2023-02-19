@@ -19,6 +19,11 @@ const Pokemons = ({ data }) => {
   if (detalhes === null) return <Login />;
   return (
     <div className="pokemons">
+      <div className="ver">
+        <Link to={`/dados/${detalhes.species.name}`} onClick={handleClick}>
+          Ver
+        </Link>
+      </div>
       <Link to={`/dados/${detalhes.species.name}`} onClick={handleClick}>
         <img
           src={detalhes.sprites.front_default}
