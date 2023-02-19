@@ -9,9 +9,9 @@ const DadosPokemon = () => {
   const [pokemon, setPokemon] = React.useState(null);
   const [login, setLogin] = React.useState(false);
 
-  let ValorLocal = localStorage.getItem("Dados");
 
   const get = async () => {
+    let ValorLocal = localStorage.getItem("Dados");
     try {
       setLogin(true);
       const response = await axios.get(ValorLocal);
@@ -25,9 +25,19 @@ const DadosPokemon = () => {
     }
   };
 
+  const timer = () => {
+    setTimeout(() => {
+      get()
+    }, 500);
+    setTimeout(() => {
+      window.localStorage.clear()
+    }, 1000)
+  } 
+
   React.useEffect(() => {
-    get();
-  }, [ValorLocal]);
+    timer()
+    clearTimeout()
+  }, [])
 
   if (pokemon === null) return <Login />;
   if (login) return <Login />;
