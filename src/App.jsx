@@ -15,6 +15,8 @@ const App = () => {
   const get = async () => {
     if (apiUrl === "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20") {
       setPrevious(false);
+    } else if(apiUrl === "https://pokeapi.co/api/v2/pokemon") {
+      setPrevious(false)
     }
     try {
       setLogin(true);
