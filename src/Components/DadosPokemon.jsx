@@ -3,12 +3,11 @@ import axios from "axios";
 import Login from "./Carregamento/Login";
 import styles from "./DadosPokemon.module.css";
 import { Link } from "react-router-dom";
-import {MdKeyboardBackspace} from 'react-icons/md'
+import { MdKeyboardBackspace } from "react-icons/md";
 
 const DadosPokemon = () => {
   const [pokemon, setPokemon] = React.useState(null);
   const [login, setLogin] = React.useState(false);
-
 
   const get = async () => {
     let ValorLocal = localStorage.getItem("Dados");
@@ -17,7 +16,6 @@ const DadosPokemon = () => {
       const response = await axios.get(ValorLocal);
       const data = response.data;
       setPokemon(data);
-      console.log(pokemon);
     } catch (error) {
       console.log(error);
     } finally {
@@ -27,24 +25,26 @@ const DadosPokemon = () => {
 
   const timer = () => {
     setTimeout(() => {
-      get()
+      get();
     }, 500);
     setTimeout(() => {
-      window.localStorage.clear()
-    }, 1000)
-  } 
+      window.localStorage.clear();
+    }, 1000);
+  };
 
   React.useEffect(() => {
-    timer()
-    clearTimeout()
-  }, [])
+    timer();
+    clearTimeout();
+  }, []);
 
   if (pokemon === null) return <Login />;
   if (login) return <Login />;
   return (
     <main className={styles.main}>
       <section className={styles.pokemon}>
-        <Link to="/"><MdKeyboardBackspace size={38} /> </Link>
+        <Link to="/">
+          <MdKeyboardBackspace size={38} />{" "}
+        </Link>
         <div className={styles.imgPokemon}>
           <img src={pokemon.sprites.back_default} alt={pokemon.species.name} />
           <img src={pokemon.sprites.front_default} alt={pokemon.species.name} />

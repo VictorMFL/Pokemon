@@ -9,7 +9,6 @@ const Pokemons = ({ data }) => {
   React.useEffect(() => {
     axios.get(data.url).then((response) => setDetalhes(response.data));
   }, [data]);
-  console.log(detalhes);
 
   const handleClick = () => {
     let pokemon = `https://pokeapi.co/api/v2/pokemon/${detalhes.species.name}`;

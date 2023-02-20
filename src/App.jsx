@@ -9,58 +9,51 @@ let apiUrl = "https://pokeapi.co/api/v2/pokemon";
 const App = () => {
   const [dados, setDados] = React.useState([]);
   const [next, setNext] = React.useState(null);
-  const [previous, setPrevious] = React.useState(null);
-  const [login, setLogin]  = React.useState(false)
+  const [previous, setPrevious] = React.useState(true);
+  const [login, setLogin] = React.useState(false);
 
   const get = async () => {
+    if (apiUrl === "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20") {
+      setPrevious(false);
+    }
     try {
-      setLogin(true)
+      setLogin(true);
       const response = await axios.get(apiUrl);
       const data = response.data.results;
-      console.log(data);
       setDados(data);
     } catch (error) {
       console.log(error);
     } finally {
-      setLogin(false)
+      setLogin(false);
     }
   };
 
   const proximaPagina = async () => {
     try {
-      setLogin(true)
+      setLogin(true);
       const response = await axios.get(apiUrl);
       const data = response.data.next;
-      const dado = response.data;
-      console.log(data);
-      console.log(dado);
       setNext(data);
       apiUrl = data;
     } catch (error) {
       console.log(error);
     } finally {
-      setLogin(false)
-      setPrevious(true)
+      setLogin(false);
+      setPrevious(true);
     }
   };
 
   const voltarPagina = async () => {
     try {
-      setLogin(true)
+      setLogin(true);
       const response = await axios.get(apiUrl);
       const data = response.data.previous;
-      if(response.data.previous !== null) {
-        console.log(data);
-        setPrevious(data);
-        apiUrl = data;
-      } else {
-        window.alert('esta é a primeira página.')
-        setPrevious(false)
-      }
+      setPrevious(data);
+      apiUrl = data;
     } catch (error) {
       console.log(error);
     } finally {
-      setLogin(false)
+      setLogin(false);
     }
   };
 
@@ -68,7 +61,7 @@ const App = () => {
     get();
   }, [apiUrl]);
 
-  if(login) return <Login />;
+  if (login) return <Login />;
   return (
     <>
       <Header />
@@ -78,8 +71,11 @@ const App = () => {
         ))}
       </main>
       <footer className="footer">
-
-        {previous ? <button onClick={voltarPagina}>Voltar</button> : <div></div>}
+        {previous ? (
+          <button onClick={voltarPagina}>Voltar</button>
+        ) : (
+          <div></div>
+        )}
         <button onClick={proximaPagina}>Próximo</button>
       </footer>
     </>
