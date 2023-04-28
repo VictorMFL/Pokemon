@@ -1,0 +1,23 @@
+.body {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.login {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 10px solid #e5e5e5;
+  border-top-color: #000;
+  animation: rotacao 1.1s infinite;
+}
+
+@keyframes rotacao {
+  to {
+    transform: rotate(1turn);
+  }
+}

@@ -1,0 +1,77 @@
+.main {
+    display: flex;
+    height: 100vh;
+    padding: 0;
+}
+
+.pokemon {
+    width: 15rem;
+    height: 100%;
+    background-color: #ffc401;
+    padding: 1rem;
+    opacity: 0;
+    transform: translateX(-40px);
+    animation: animeLeft 1.5s forwards;
+}
+
+@keyframes animeLeft {
+    to {
+      opacity: 1;
+      transform: initial;
+    }
+  }
+
+.pokemon a {
+    text-decoration: none;
+    color: #000;
+}
+
+.imgPokemon {
+    margin-top: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+
+/* Dados do pokémon*/
+.dadosPokemon {
+    width: 100%;
+    padding: 2rem 4rem;
+}
+
+.dadosPokemon h1 {
+    margin: 1.5rem 0;
+}
+
+.habilidades h1 {
+    margin-bottom: 0;
+}
+
+.habilidades p {
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+@media(max-width:529px) {
+    .imgPokemon {
+        flex-direction: column;
+    }
+    .dadosPokemon {
+        padding: 1rem 1.5rem;
+    }
+
+    .dadosPokemon h1 {
+        font-size: 1.2rem;
+    }
+    .dadosPokemon h3 {
+        font-size: 1rem;
+    }
+    
+}

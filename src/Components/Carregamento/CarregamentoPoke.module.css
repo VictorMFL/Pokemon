@@ -1,0 +1,52 @@
+.carregamento {
+  position: relative;
+  width: 20rem;
+  height: 12rem;
+  background-color: #eee;
+  margin-bottom: 1px;
+  z-index: 10;
+}
+
+.padding {
+  padding: 7px
+}
+
+.carregamento span {
+  width: 5rem;
+  height: 100%;
+  background-color: #edebeb;
+  position: absolute;
+  animation: carregando infinite 0.5s;
+  z-index: 1000;
+}
+
+@media(max-width:1020px) {
+  .carregamento {
+    width: 15rem;
+  }
+}
+
+@media(max-width:526px) {
+  .carregamento {
+    width: calc(100% + 1rem);
+  }
+}
+
+@keyframes carregando {
+  10% {
+    left: 10%;
+  }
+  30% {
+    left: 30%;
+  }
+  50% {
+    left: 50%;
+  }
+  70% {
+    left: 70%;
+  }
+  100% {
+    left: 100%;
+    transform: translateX(-5rem);
+  }
+}
